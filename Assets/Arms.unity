@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  turnSpeed: 30
+  turnSpeed: 100
 --- !u!4 &982206630
 Transform:
   m_ObjectHideFlags: 0
