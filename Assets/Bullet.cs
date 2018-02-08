@@ -13,18 +13,18 @@ public class Bullet : MonoBehaviour {
 	public float speed = 5000;   //初速
 	public float speed2 = 5000;   //初速
 
-	private float distance1=0;   //フレーム間でのベクトル差分
+	private float distance1=0;   //フレーム間でのベクトル差分長
 	private float distance2=0;   //総移動距離
 	private float flag=0;        //フラグ
-	private float count=-1;
+	private float count=-1;    //衝突回数
 
-	private Vector3 t1Angle;
-	private Vector3 t3Angle;
-	private Vector3 t4Angle;
+	private Vector3 t1Angle;   //muzzleとshootのベクトル差分
+	private Vector3 t3Angle;   //muzzleの座標格納
+	private Vector3 t4Angle;   //shootの座標格納
 
 
 	void Start () {
-		shoot.transform.position = muzzle.position;
+		shoot.transform.position = muzzle.position;    //位置調整
 	}
 	
 
@@ -33,50 +33,41 @@ public class Bullet : MonoBehaviour {
 		float step = speed2 * Time.deltaTime;
 		t1Angle = muzzle.transform.position - shoot.transform.position;
 		t4Angle = t4Angle - shoot.transform.position;
-		distance1 = t1Angle.magnitude;
-		distance2 += t4Angle.magnitude;
+		distance1 = t1Angle.magnitude;     
+		distance2 += t4Angle.magnitude;   //総移動距離の計算
 		t4Angle = shoot.transform.position;
-
-		//float angleDir = muzzle.transform.eulerAngles.y * (Mathf.PI / 180.0f);
-		//Vector3 dir = new Vector3 (Mathf.Cos (angleDir), Mathf.Sin (angleDir), -5.0f);
 		t3Angle = muzzle.transform.forward;
 
+		/*ここからうでを伸ばす機能
 		Vector3 scale = t1Angle;
 		scale.x = 1;
 		ring.transform.forward = t1Angle;
 		ring.transform.localScale = scale;
+		ここまで*/
 
 
-		if (flag == 0) {
-			if (distance2 > 50) {
+		if (flag == 0) {   
+			if (distance2 > 50) {     //総移動距離が50以上の時フラグ
 					flag = 1;
 					distance2 = 0;
 			}
 			
-		}   if (flag == 1) {
-			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, step/50);
+		}   if (flag == 1) {     //手の方へ帰ってくるのとき
+			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, step/20);
 			if (distance1 < 1) {
-				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
-				shoot.transform.position = muzzle.transform.position;
+				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;   //加速度0
+				shoot.transform.position = muzzle.transform.position;  //初期位置に戻す
 				flag = 2;
 				count = 0;
 			}
-				
-			
-		}  if (flag == 2) {
-			shoot.transform.position = muzzle.transform.position;
-			count = 0;
-			if (Input.GetKeyDown (KeyCode.Z)) {
-				t4Angle = muzzle.transform.position;
-				shoot.transform.position = muzzle.position;
-				shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/5);
-				flag = 0;
-				distance2 = 0;
-			}
-		}
 
-		if (count==1) {
-			if (shoot.transform.position.z-80 < muzzle.transform.position.z) {
+			if (flag == 2) { 	
+				shoot.transform.position = muzzle.transform.position;  //初期位置
+			}
+		}  
+
+		if (flag!=2 && count==1) {   //衝突回数が1を超えた時，球の1と発射口の位置との距離をとり始める
+			if (shoot.transform.position.z-80 < muzzle.transform.position.z) {   //ｚ軸で位置判定
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 				flag = 1;
 				count = 0;
@@ -84,14 +75,14 @@ public class Bullet : MonoBehaviour {
 		}
 			
 
-		if (Input.GetKeyDown (KeyCode.Z)) {
+		if (Input.GetKeyDown (KeyCode.Z)) {    //Zキーが押された時
+			shoot.transform.position = muzzle.transform.position;
 			t4Angle = muzzle.transform.position;
-			Vector3 inputPosition   = new Vector3( shoot.transform.position.x, shoot.transform.position.y, shoot.transform.position.z);
 
 			count = 0;
-			shoot.transform.position = muzzle.position;
-			shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/5);
+			shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/6);  //腕が向いている方向に射出
 			distance2 = 0;
+			flag = 0;
 
 
 
@@ -100,12 +91,14 @@ public class Bullet : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		count++;
 
+		/*エネミーに当たった時設定　
 		if(other.gameObject.tag == "Enemy") {
 			Destroy(other.gameObject);
 			flag = 1;
 			count = 0;
 		}
-	}
+		ここまで*/
+	} 
 	void OnTrigerEnter(Collider other){
 		shoot.transform.position = muzzle.transform.position;
 		flag = 1;
