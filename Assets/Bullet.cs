@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour {
 
 	public Transform muzzle;  //射出場所
 
+	public Transform ring;
+
 	public float speed = 5000;   //初速
 	public float speed2 = 5000;   //初速
 
@@ -35,9 +37,15 @@ public class Bullet : MonoBehaviour {
 		distance2 += t4Angle.magnitude;
 		t4Angle = shoot.transform.position;
 
-		float angleDir = muzzle.transform.eulerAngles.y * (Mathf.PI / 180.0f);
-		Vector3 dir = new Vector3 (Mathf.Cos (angleDir), Mathf.Sin (angleDir), -5.0f);
-		t3Angle = muzzle.transform.forward-dir;
+		//float angleDir = muzzle.transform.eulerAngles.y * (Mathf.PI / 180.0f);
+		//Vector3 dir = new Vector3 (Mathf.Cos (angleDir), Mathf.Sin (angleDir), -5.0f);
+		t3Angle = muzzle.transform.forward;
+
+		Vector3 scale = t1Angle;
+		scale.x = 1;
+		ring.transform.forward = t1Angle;
+		ring.transform.localScale = scale;
+
 
 		if (flag == 0) {
 			if (distance2 > 50) {
@@ -68,7 +76,7 @@ public class Bullet : MonoBehaviour {
 		}
 
 		if (count==1) {
-			if (shoot.transform.position.z-50 < muzzle.transform.position.z) {
+			if (shoot.transform.position.z-80 < muzzle.transform.position.z) {
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 				flag = 1;
 				count = 0;
@@ -77,11 +85,14 @@ public class Bullet : MonoBehaviour {
 			
 
 		if (Input.GetKeyDown (KeyCode.Z)) {
-			count = 0;
 			t4Angle = muzzle.transform.position;
+			Vector3 inputPosition   = new Vector3( shoot.transform.position.x, shoot.transform.position.y, shoot.transform.position.z);
+
+			count = 0;
 			shoot.transform.position = muzzle.position;
 			shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/5);
 			distance2 = 0;
+
 
 
 		}
@@ -99,5 +110,7 @@ public class Bullet : MonoBehaviour {
 		shoot.transform.position = muzzle.transform.position;
 		flag = 1;
 	}
+
+
 
 }
