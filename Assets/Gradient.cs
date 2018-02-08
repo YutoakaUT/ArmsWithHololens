@@ -15,7 +15,7 @@ public class Gradient : MonoBehaviour {
 		//myCube = GameObject.Find("CubeName");
 
 		//今の色コンソールに出力
-		Debug.Log(this.GetComponent<Renderer>().material.color);
+		//Debug.Log(this.GetComponent<Renderer>().material.color);
 
 		if (TimerFanc.timeflag == 1) {
 			//色変更
@@ -23,6 +23,6 @@ public class Gradient : MonoBehaviour {
 			this.GetComponent<Renderer> ().material.color = new Color (tmp,tmp,tmp);
 		}
 		//変更後の色コンソールに出力
-		Debug.Log(this.GetComponent<Renderer>().material.color);
+		//Debug.Log(this.GetComponent<Renderer>().material.color);
 	}
 }
