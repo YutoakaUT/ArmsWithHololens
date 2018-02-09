@@ -45,17 +45,26 @@ public class Bullet : MonoBehaviour {
 					distance2 = 0;
 			}
 			
+<<<<<<< HEAD
 		}   if (flag == 1) {
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, step/50);
+=======
+		}   if (flag == 1) {     //手の方へ帰ってくるとき
+			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, step/20);
+>>>>>>> Punch2
 			if (distance1 < 1) {
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 				shoot.transform.position = muzzle.transform.position;
 				flag = 2;
 				count = 0;
 			}
+<<<<<<< HEAD
 				
 			
 		}  if (flag == 2) {
+=======
+		}  if (flag == 2) {   //一度パンチが帰ってきた後の処理
+>>>>>>> Punch2
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
 			if (Input.GetKeyDown (KeyCode.Z)) {
@@ -64,11 +73,20 @@ public class Bullet : MonoBehaviour {
 				shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/5);
 				flag = 0;
 				distance2 = 0;
+<<<<<<< HEAD
+=======
+		
+>>>>>>> Punch2
 			}
 		}
 
+<<<<<<< HEAD
 		if (count==1) {
 			if (shoot.transform.position.z-50 < muzzle.transform.position.z) {
+=======
+		if (count==1) {   //衝突回数が1を超えた時，球の1と発射口の位置との距離をとり始める
+			if (shoot.transform.position.z-80 < muzzle.transform.position.z) {   //ｚ軸で位置判定
+>>>>>>> Punch2
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 				flag = 1;
 				count = 0;
