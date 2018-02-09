@@ -1284,7 +1284,6 @@ GameObject:
   - component: {fileID: 1964629883}
   - component: {fileID: 1964629882}
   - component: {fileID: 1964629881}
-  - component: {fileID: 1964629880}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Untagged
@@ -1305,22 +1304,6 @@ Transform:
   m_Father: {fileID: 982206630}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1964629880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1964629878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 029d3ad66d01b449abf3585cf432e7ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shoot: {fileID: 2071219368}
-  muzzle: {fileID: 1964629879}
-  ring: {fileID: 0}
-  speed: 5000
-  speed2: 5000
 --- !u!23 &1964629881
 MeshRenderer:
   m_ObjectHideFlags: 0
