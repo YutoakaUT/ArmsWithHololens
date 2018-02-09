@@ -6,22 +6,20 @@ using UnityEngine.SceneManagement;
 public class StartToChange : MonoBehaviour {
 
 	string scenename;
-	public static float wateTime=3.0f;
 
 	// Use this for initialization
 	void Start () {
-		//待機時間決定
-		//wateTime = 3.0f;
+
 	}
 
 	// Update is called once per frame
 	void Update () {
 
 		//3秒経過したらscenename（Object名）のSceneにとぶ
-		if(TimerFanc.countTime>=wateTime){
+		if(TimerFanc.countTime>=3){
 		 SceneManager.LoadScene (scenename);
 		 TimerFanc.timeflag = 0;
-   		 TimerFanc.countTime = 0;
+   		TimerFanc.countTime = 0;
 		}	
 	}
 
