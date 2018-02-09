@@ -326,7 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 2071219368}
   muzzle: {fileID: 422820429}
-  ring: {fileID: 0}
   speed: 5000
   speed2: 5000
 --- !u!23 &422820431
@@ -767,11 +766,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 23712270701603442, guid: c0b19165550b9ea4a972929e1f4be427,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 202f79a0dbedb406bb2eb385224c4539, type: 2}
     m_RemovedComponents:
     - {fileID: 114936742167036024, guid: c0b19165550b9ea4a972929e1f4be427, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0b19165550b9ea4a972929e1f4be427, type: 2}
