@@ -18,6 +18,9 @@ public class Target_location : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		/*print(target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+		print(target.GetComponentInChildren<Renderer>().bounds.size.y/2);
+		print(target.GetComponentInChildren<Renderer>().bounds.size.z/2);*/
     }
 
     // Update is called once per frame
@@ -31,27 +34,27 @@ public class Target_location : MonoBehaviour
 				int wall=Random.Range(1,5);
 				if(wall==1)
 				{
-					temp_x = Random.Range(-24,25);
-					temp_y = Random.Range(1,50);
-					temp_z = 24.4f;
+					temp_x = Random.Range(-24+target.GetComponentInChildren<Renderer>().bounds.size.x/2,25-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_y = Random.Range(1+target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = 25-target.GetComponentInChildren<Renderer>().bounds.size.z;
 				}
 				else if(wall==2)
 				{
-					temp_x = Random.Range(-24,25);
-					temp_y = Random.Range(1,50);
-					temp_z = -24.4f;
+					temp_x = Random.Range(-24+target.GetComponentInChildren<Renderer>().bounds.size.x/2,25-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_y = Random.Range(1+target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = target.GetComponentInChildren<Renderer>().bounds.size.z-25;
 				}
 				else if(wall==3)
 				{
-					temp_x = -24.4f;
-					temp_y = Random.Range(1,50);
-					temp_z = Random.Range(-24,25);
+					temp_x = target.GetComponentInChildren<Renderer>().bounds.size.z-25;
+					temp_y = Random.Range(1+target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = Random.Range(-24+target.GetComponentInChildren<Renderer>().bounds.size.x/2,25-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
 				}
 				else if(wall==4)
 				{
-					temp_x = 24.4f;
-					temp_y = Random.Range(1,50);
-					temp_z = Random.Range(-24,25);
+					temp_x = 25-target.GetComponentInChildren<Renderer>().bounds.size.z;
+					temp_y = Random.Range(1+target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = Random.Range(-24+target.GetComponentInChildren<Renderer>().bounds.size.x/2,25-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
 				}
                 if (px.Contains(temp_x)&& py.Contains(temp_y) && pz.Contains(temp_z))
                 {
