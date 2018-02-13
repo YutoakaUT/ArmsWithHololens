@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
@@ -21,15 +20,15 @@ public class Bullet : MonoBehaviour {
 	private Vector3 t1Angle;   //muzzleとshootのベクトル差分
 	private Vector3 t3Angle;   //muzzleの座標格納
 	private Vector3 t4Angle;   //shootの座標格納
-
+	private int flag_right = 1; 
 
 	void Start () {
 		shoot.transform.position = muzzle.position;    //位置調整
 	}
-	
+
 
 	void Update () {
-		
+
 		float step = speed2 * Time.deltaTime;
 		t1Angle = muzzle.transform.position - shoot.transform.position;
 		t4Angle = t4Angle - shoot.transform.position;
@@ -48,10 +47,10 @@ public class Bullet : MonoBehaviour {
 
 		if (flag == 0) {   
 			if (distance2 > 50) {     //総移動距離が50以上の時フラグ
-					flag = 1;
-					distance2 = 0;
+				flag = 1;
+				distance2 = 0;
 			}
-			
+
 		}   if (flag == 1) {     //手の方へ帰ってくるとき
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, step/20);
 			if (distance1 < 1) {
@@ -63,13 +62,17 @@ public class Bullet : MonoBehaviour {
 		}  if (flag == 2) {   //一度パンチが帰ってきた後の処理
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
+			flag_right = 1;
 			if (Input.GetKeyDown (KeyCode.Z)) {
-				t4Angle = muzzle.transform.position;
-				shoot.transform.position = muzzle.position;
-				shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/5);
-				flag = 0;
-				distance2 = 0;
-		
+				if (flag_right == 1)
+				{
+					t4Angle = muzzle.transform.position;
+					shoot.transform.position = muzzle.position;
+					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);
+					flag = 0;
+					distance2 = 0;
+					flag_right = 0;
+				}
 			}
 		}  
 
@@ -80,32 +83,35 @@ public class Bullet : MonoBehaviour {
 				count = 0;
 			}
 		}
-			
+
 
 		if (Input.GetKeyDown (KeyCode.Z)) {    //Zキーが押された時
-			shoot.transform.position = muzzle.transform.position;
-			t4Angle = muzzle.transform.position;
+			if (flag_right == 1)
+			{
+				shoot.transform.position = muzzle.transform.position;
+				t4Angle = muzzle.transform.position;
 
-			count = 0;
-			shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed/6);  //腕が向いている方向に射出
-			distance2 = 0;
-			flag = 0;
+				count = 0;
+				shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 6);  //腕が向いている方向に射出
+				distance2 = 0;
+				flag = 0;
+				flag_right = 0;
 
-
-
+			}
 		}
 	}
 	void OnCollisionEnter(Collision other){
 		count++;
 
-		/*エネミーに当たった時設定　
+		//エネミーに当たった時設定　
 		if(other.gameObject.tag == "Enemy") {
-			Destroy(other.gameObject);
 			flag = 1;
 			count = 0;
 		}
-		ここまで*/
-	} 
+		//ここまで
+	}
+
+
 	void OnTrigerEnter(Collider other){
 		shoot.transform.position = muzzle.transform.position;
 		flag = 1;

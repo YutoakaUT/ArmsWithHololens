@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -307,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 422820428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.74, z: 0.64000034}
+  m_LocalPosition: {x: 0.5, y: 0.74, z: 0.29}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 982206630}
@@ -321,13 +321,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 422820428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 029d3ad66d01b449abf3585cf432e7ac, type: 3}
+  m_Script: {fileID: 11500000, guid: c7cf274f437a84337b3fa8b4cb20b884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 2071219368}
-  muzzle: {fileID: 422820429}
-  speed: 5000
-  speed2: 5000
+  muzzle: {fileID: 907248357}
+  ring: {fileID: 0}
+  speed: 10000
+  speed2: 10000
 --- !u!23 &422820431
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -770,6 +771,34 @@ Prefab:
     - {fileID: 114936742167036024, guid: c0b19165550b9ea4a972929e1f4be427, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0b19165550b9ea4a972929e1f4be427, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &907248356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 907248357}
+  m_Layer: 0
+  m_Name: RightObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &907248357
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907248356}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.49, y: 0.85, z: 1.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 982206630}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &912926878
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +930,7 @@ Transform:
   - {fileID: 318465659}
   - {fileID: 422820429}
   - {fileID: 1308376490}
+  - {fileID: 907248357}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
