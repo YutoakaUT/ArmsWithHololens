@@ -35,3 +35,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Materials/SceneRbeset.prefab
+Assets/Materials/SceneRbeset.prefab.meta
