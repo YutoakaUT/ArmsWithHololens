@@ -10,7 +10,7 @@ public class Rotatemuzzle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.Rotate(new Vector3(x, 0, 0));
+            transform.Rotate(new Vector3(-1*x, 0, 0));
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -22,7 +22,7 @@ public class Rotatemuzzle : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            transform.Rotate(new Vector3(-1*x, 0, 0));
+            transform.Rotate(new Vector3(x, 0, 0));
         }
     }
 }
