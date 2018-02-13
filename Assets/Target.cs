@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class Target : MonoBehaviour
 {
-	public AudioClip clip;
+
     // Use this for initialization
     void Start()
     {
-		
+
     }
 
     // Update is called once per frame
     void Update()
     {
-		
+
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -35,10 +34,10 @@ public class Target : MonoBehaviour
             Target_location.pz.Remove((int)hitPos.z);
 
             //相手のタグがpunchならば、自分を消す
-            Destroy(transform.parent.gameObject);
+            Destroy(this.gameObject);
             Target_location.num--;
-			AudioSource.PlayClipAtPoint(clip, transform.position);
-            //FindObjectOfType<Score>().AddPoint(10);
+            FindObjectOfType<Score>().AddPoint(10);
+
         }
     }
 }
