@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Gradient : MonoBehaviour {
 
 	//public GameObject myCube;
+	int collisionFrag=0;
 
 	// Use this for initialization
 	void Update () {
@@ -17,12 +18,31 @@ public class Gradient : MonoBehaviour {
 		//今の色コンソールに出力
 		//Debug.Log(this.GetComponent<Renderer>().material.color);
 
-		if (TimerFanc.timeflag == 1) {
+		if ((TimerFanc.timeflag == 1)&&(collisionFrag == 1)) {
 			//色変更
-			float tmp = 1.0f - (TimerFanc.countTime / StartToChange.wateTime);
+			float tmp = 1.0f - (TimerFanc.countTime / SceneChange.wateTime);
 			this.GetComponent<Renderer> ().material.color = new Color (tmp,tmp,tmp);
 		}
 		//変更後の色コンソールに出力
 		//Debug.Log(this.GetComponent<Renderer>().material.color);
+	}
+
+	void OnCollisionStay(Collision collision){
+
+		//switchタグが付いたObjectと触れたら起動
+		if(collision.gameObject.tag == "finger" ){
+			collisionFrag = 1;
+		}
+		else{
+			//それ以外の処理
+
+		}
+	}
+
+	void OnCollisionExit(Collision collision){
+		if(collision.gameObject.tag == "finger"){
+			this.GetComponent<Renderer> ().material.color = new Color (1.0f,1.0f,1.0f);
+			collisionFrag = 0;
+		}
 	}
 }

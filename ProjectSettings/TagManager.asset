@@ -9,6 +9,8 @@ TagManager:
   - rightArm
   - leftGrove
   - leftArm
+  - Punch
+  - finger
   layers:
   - Default
   - TransparentFX
