@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour {
 
 	private float distance1=0;   //フレーム間でのベクトル差分長
 	private float distance2=0;   //総移動距離
-	private float flag=0;        //フラグ
+	private float flag=-1;        //フラグ
 	private float count=-1;    //衝突回数
 
 	private Vector3 t1Angle;   //muzzleとshootのベクトル差分
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour {
 
 	void Update () {
 
-		float step = speed2 * Time.deltaTime;
+		//float step = speed2 * Time.deltaTime;
 		t1Angle = muzzle.transform.position - shoot.transform.position;
 		t4Angle = t4Angle - shoot.transform.position;
 		distance1 = t1Angle.magnitude;     
@@ -37,6 +37,9 @@ public class Bullet : MonoBehaviour {
 		t4Angle = shoot.transform.position;
 		t3Angle = muzzle.transform.forward;
 
+		if (flag == -1) {
+			shoot.transform.position = muzzle.transform.position;
+		}
 		/*ここからうでを伸ばす機能
 		Vector3 scale = t1Angle;
 		scale.x = 1;
@@ -52,7 +55,7 @@ public class Bullet : MonoBehaviour {
 			}
 
 		}   if (flag == 1) {     //手の方へ帰ってくるとき
-			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, step/20);
+			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 40/distance1);
 			if (distance1 < 1) {
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;   //加速度0
 				shoot.transform.position = muzzle.transform.position;  //初期位置に戻す
