@@ -16,7 +16,7 @@ public class Bullet2 : MonoBehaviour
 
     private float distance1 = 0;   //フレーム間でのベクトル差分長
     private float distance2 = 0;   //総移動距離
-    private float flag = 0;        //フラグ
+    private float flag = -1;        //フラグ
     private float count = -1;    //衝突回数
 
     private Vector3 t1Angle;   //muzzleとshootのベクトル差分
@@ -48,6 +48,10 @@ public class Bullet2 : MonoBehaviour
 		ring.transform.localScale = scale;
 		ここまで*/
 
+		if (flag == -1) {
+			shoot.transform.position = muzzle.transform.position;
+		}
+
 
         if (flag == 0)
         {
@@ -60,7 +64,7 @@ public class Bullet2 : MonoBehaviour
         }
         if (flag == 1)
         {     //手の方へ帰ってくるとき
-            shoot.transform.position = Vector3.MoveTowards(shoot.transform.position, muzzle.transform.position, step / 20);
+			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 40/distance1);
             if (distance1 < 1)
             {
                 shoot.GetComponent<Rigidbody>().velocity = Vector3.zero;   //加速度0
