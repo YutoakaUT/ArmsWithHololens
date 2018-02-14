@@ -19,7 +19,7 @@ public class Target_normal : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //衝突判定
-        if (collision.gameObject.tag == "Punch")//相手のタグがpunchの場合
+        if (collision.gameObject.tag == "leftGrove"||collision.gameObject.tag == "rightGrove")//相手のタグがGroveの場合
         {
             Vector3 hitPos = new Vector3(0,0,0);
             foreach (ContactPoint point in collision.contacts)

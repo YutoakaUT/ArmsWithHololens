@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 186966095}
   m_Layer: 0
   m_Name: LeftGlove
-  m_TagString: Punch
+  m_TagString: leftGrove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -977,7 +977,7 @@ GameObject:
   - component: {fileID: 614869966}
   m_Layer: 0
   m_Name: RightGlove
-  m_TagString: Punch
+  m_TagString: rightGrove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2219,7 +2219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1932178668048484, guid: 8d5b935cdd561f647bd1c4dc72d828f4, type: 2}
   Debug: 1
-  max: 10
+  max: 100
 --- !u!4 &1439180437
 Transform:
   m_ObjectHideFlags: 0
