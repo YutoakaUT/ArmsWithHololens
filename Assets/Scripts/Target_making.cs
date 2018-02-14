@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 public class Target_making : MonoBehaviour
 {
-    public GameObject target;
+    public GameObject target_normal;
+	public GameObject target_hard;
+	public GameObject target_small;
 	public bool Debug=false;
 	public static List<GameObject> targetz = new List<GameObject>();
     public int max = 5; //的の最大数
@@ -45,34 +47,34 @@ A:				if(countt>=100)
 				wall=Random.Range(1,5);
 				if(wall==1)
 				{
-					temp_x = Random.Range(-24.5f+target.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
-					temp_y = Random.Range(target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
-					temp_z = 24.5f-target.GetComponentInChildren<Renderer>().bounds.size.z;
+					temp_x = Random.Range(-24.5f+target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_y = Random.Range(target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = 24.5f-target_normal.GetComponentInChildren<Renderer>().bounds.size.z;
 				}
 				else if(wall==2)
 				{
-					temp_x = Random.Range(-24.5f+target.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
-					temp_y = Random.Range(target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
-					temp_z = target.GetComponentInChildren<Renderer>().bounds.size.z-24.5f;
+					temp_x = Random.Range(-24.5f+target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_y = Random.Range(target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = target_normal.GetComponentInChildren<Renderer>().bounds.size.z-24.5f;
 				}
 				else if(wall==3)
 				{
-					temp_x = target.GetComponentInChildren<Renderer>().bounds.size.z-24.5f;
-					temp_y = Random.Range(target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
-					temp_z = Random.Range(-24.5f+target.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_x = target_normal.GetComponentInChildren<Renderer>().bounds.size.z-24.5f;
+					temp_y = Random.Range(target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = Random.Range(-24.5f+target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
 				}
 				else if(wall==4)
 				{
-					temp_x = 24.5f-target.GetComponentInChildren<Renderer>().bounds.size.z;
-					temp_y = Random.Range(target.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
-					temp_z = Random.Range(-24.5f+target.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_x = 24.5f-target_normal.GetComponentInChildren<Renderer>().bounds.size.z;
+					temp_y = Random.Range(target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,50-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
+					temp_z = Random.Range(-24.5f+target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2,24.5f-target_normal.GetComponentInChildren<Renderer>().bounds.size.x/2);
 				}
 				if(Debug==true&&num<=10)
 					temp_y=2;
 				
 				foreach (GameObject gameo in targetz)
 				{
-					if((gameo.transform.position-new Vector3(temp_x,temp_y,temp_z)).sqrMagnitude<target.GetComponentInChildren<Renderer>().bounds.size.x*target.GetComponentInChildren<Renderer>().bounds.size.x)
+					if((gameo.transform.position-new Vector3(temp_x,temp_y,temp_z)).sqrMagnitude<target_normal.GetComponentInChildren<Renderer>().bounds.size.x*target_normal.GetComponentInChildren<Renderer>().bounds.size.x)
 					{
 						countt++;
 						print("countt="+countt);
@@ -86,7 +88,7 @@ A:				if(countt>=100)
                 pos.y = temp_y;
                 pos.z = temp_z;
 				
-                GameObject targets = GameObject.Instantiate(target) as GameObject;
+                GameObject targets = GameObject.Instantiate(target_normal) as GameObject;
                 targets.transform.position = pos;
 				if(wall>2)
 					targets.transform.Rotate(0f, 90f, 0f);
