@@ -5,33 +5,34 @@ public class Score : MonoBehaviour
 {
 
     // スコアを表示する
-    Text scoreText;
+    public Text scoreText;
+
     // スコア
-    public static int score;
+    private int score;
 
 
     void Start()
     {
-		Initialize();
-		scoreText=GameObject.Find("Score").GetComponent<Text>();
+        Initialize();
     }
 
     void Update()
     {
+
         // スコア・ハイスコアを表示する
-		scoreText.text = "Score:"+score.ToString();
+        scoreText.text = score.ToString();
     }
 
     // ゲーム開始前の状態に戻す
     private void Initialize()
     {
         // スコアを0に戻す
-		score = 0;
+        score = 0;
     }
 
     // ポイントの追加
     public void AddPoint(int point)
     {
-		score = score + point;
+        score = score + point;
     }
 }
