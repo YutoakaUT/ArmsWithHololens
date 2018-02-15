@@ -11,6 +11,7 @@ TagManager:
   - leftArm
   - Punch
   - finger
+  - mato
   layers:
   - Default
   - TransparentFX

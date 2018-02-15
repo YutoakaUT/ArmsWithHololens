@@ -10,11 +10,10 @@ public class CameraRotation : MonoBehaviour {
 
 	float maxRotate = 25;//回転角の最大値//
 	float tmpRotate = 0;//現在の回転角//
-	float startRotation;//最初のグローバルY座標//
 	// Use this for initialization
 	void Start()
 	{
-		startRotation = this.transform.rotation.eulerAngles.y; //最初のグローバルのY座標を代入//
+
 	}
 
 	// Update is called once per frame

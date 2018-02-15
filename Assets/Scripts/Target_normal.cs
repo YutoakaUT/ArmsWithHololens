@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+
 public class Target_normal : MonoBehaviour
 {
+	public GameObject ExploadObj;
 	public AudioClip clip;
     // Use this for initialization
     void Start()
@@ -29,6 +32,7 @@ public class Target_normal : MonoBehaviour
 
 			Target_making.targetz.Remove(transform.parent.gameObject);
             Destroy(transform.parent.gameObject);　　　//自滅
+			GameObject effect = (GameObject)Instantiate (ExploadObj,hitPos, Quaternion.identity);
             Target_making.num--;
 			AudioSource.PlayClipAtPoint(clip, transform.position);//音
 			Target_making.create=true;              //再生成

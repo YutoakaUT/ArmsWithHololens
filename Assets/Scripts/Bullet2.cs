@@ -6,7 +6,6 @@ public class Bullet2 : MonoBehaviour {
 	public GameObject shoot;  //弾丸
 
 	public Transform muzzle;  //射出場所
-	public Transform Target;  //射出場所
 
 	public float speed = 5000;   //初速
 	public float speed2 = 5000;   //初速
@@ -25,12 +24,10 @@ public class Bullet2 : MonoBehaviour {
 	private int flag_right = 1; 
 
 	private float startTime;
-	public Vector3 beginPoint = new Vector3(0, 0, 0);
-	public Vector3 finalPoint = new Vector3(0, 0, 30);
-	public Vector3 farPoint = new Vector3(0, 0, 0);
 
 	Vector3 a= new Vector3(0,3,0);//右グローブの回転速度
-	public Vector3 hitPos;
+
+
 
 	void Start () {
 		shoot.transform.position = muzzle.position;    //位置調整
@@ -67,8 +64,6 @@ public class Bullet2 : MonoBehaviour {
 
 		if (count == 2) {   //衝突回数が1を超えた時，球の位置と発射口の位置との距離をとり始める
 			shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
-			shoot.transform.position = Vector3.MoveTowards (t4Angle, hitPos, speed);
-			shoot.transform.position = hitPos;
 			if (t2Angle.z > 0.3 || t2Angle.z < -0.3 || t2Angle.x > 0.3 || t2Angle.x < -0.3) {
 				flag = 1;
 				count = 0;
@@ -155,11 +150,10 @@ public class Bullet2 : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter(Collision other){
-		hitPos =shoot.transform.position;
 		count++;
 
 		//エネミーに当たった時設定　
-		if(other.gameObject.tag == "Enemy") {
+		if(other.gameObject.tag == "mato") {
 			flag = 1;
 			count = 0;
 		}
