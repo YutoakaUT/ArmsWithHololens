@@ -19,7 +19,7 @@ public class Target_making : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		createtarget(10);
+		createtarget(50);
     }
 
     // Update is called once per frame

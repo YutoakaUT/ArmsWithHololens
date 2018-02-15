@@ -78,7 +78,7 @@ public class Bullet2 : MonoBehaviour
             shoot.transform.position = muzzle.transform.position;
             count = 0;
             flag_right=1;
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetMouseButton(1)||Input.GetMouseButton(2))
             {
                 if (flag_right == 1)
                 {
@@ -103,7 +103,7 @@ public class Bullet2 : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetMouseButton(1)||Input.GetMouseButton(2))
         {    //Zキーが押された時
             if (flag_right == 1)
             {
