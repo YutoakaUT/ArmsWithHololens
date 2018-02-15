@@ -11,13 +11,13 @@ public class Target_normal : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		
+
     }
 
     // Update is called once per frame
     void Update()
     {
-		
+
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -33,11 +33,9 @@ public class Target_normal : MonoBehaviour
 			Target_making.targetz.Remove(transform.parent.gameObject);
             Destroy(transform.parent.gameObject);　　　//自滅
 			GameObject effect = (GameObject)Instantiate (ExploadObj,hitPos, Quaternion.identity);
-            Target_making.num--;
 			AudioSource.PlayClipAtPoint(clip, transform.position);//音
-			Target_making.create=true;              //再生成
+			Target_making.tar++;              //再生成
 			Score.score+=10;
-            //FindObjectOfType<Score>().AddPoint(10);
         }
     }
 }

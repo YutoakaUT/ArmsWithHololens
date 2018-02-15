@@ -299,6 +299,7 @@ MonoBehaviour:
   muzzle: {fileID: 58329211}
   speed: 10000
   speed2: 10000
+  Debug: 1
 --- !u!23 &137141275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -758,8 +759,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 186966094}
   muzzle: {fileID: 1755735142}
-  speed: 5000
-  speed2: 5000
+  speed: 10000
+  speed2: 10000
+  Debug: 1
 --- !u!114 &470947287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,9 +1731,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d15fb37850af21448d0d37b00de33f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1932178668048484, guid: 8d5b935cdd561f647bd1c4dc72d828f4, type: 2}
+  target_normal: {fileID: 1932178668048484, guid: 8d5b935cdd561f647bd1c4dc72d828f4,
+    type: 2}
+  target_hard: {fileID: 1805950802472148, guid: db871f0a6e87a2e4ba814861a9a64e5b,
+    type: 2}
+  target_small: {fileID: 0}
   Debug: 0
-  max: 50
 --- !u!4 &1439180437
 Transform:
   m_ObjectHideFlags: 0
@@ -1967,6 +1972,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae9c208c4d724adb9921cf7030c620f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wSpeed: 10
-  sSpeed: 7
-  adRotate: 200
+  adRotate: 100
+  Debug: 1

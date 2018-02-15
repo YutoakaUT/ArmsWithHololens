@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 
 	public float speed = 5000;   //初速
 	public float speed2 = 5000;   //初速
-
+	public bool Debug = false;
 	private float distance1=0;   //フレーム間でのベクトル差分長
 	private float distance2=0;   //総移動距離
 	private float flag=-1;        //フラグ
@@ -22,6 +22,8 @@ public class Bullet : MonoBehaviour {
 	private Vector3 tz1Angle;   //右グローブ用
 	private Vector3 tz2Angle;   //左グローブ用
 	private int flag_right = 1; 
+
+
 
 	private float startTime;
 
@@ -99,20 +101,41 @@ public class Bullet : MonoBehaviour {
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
 			flag_right = 1;
-			if (Input.GetKeyDown (KeyCode.Z)) {
+
+			if (Debug==false && (Input.GetKeyDown(KeyCode.Z))){
+				if (flag_right == 1) {
+					shoot.transform.position = muzzle.transform.position;
+					t4Angle = muzzle.transform.position;
+					count = 0;
+
+					shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
+					//右手用
+					//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
+					//左手用
+					shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);
+
+					distance2 = 0;
+					flag = 0;
+					flag_right = 0;
+
+				}
+			}else if(Debug==true && (Input.GetMouseButton(0)||Input.GetMouseButton(2))) {    //Zキーが押された時
 				if (flag_right == 1)
 				{
+					shoot.transform.position = muzzle.transform.position;
 					t4Angle = muzzle.transform.position;
-					shoot.transform.position = muzzle.position;
+					count = 0;
 
-					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);
+					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
 					//右手用
-					//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 100);
+					//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
 					//左手用
 					shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);
-					flag = 0;
+
 					distance2 = 0;
+					flag = 0;
 					flag_right = 0;
+
 				}
 			}
 		}  
@@ -129,8 +152,24 @@ public class Bullet : MonoBehaviour {
 			}
 		}
 
+		if (Debug==false && (Input.GetKeyDown(KeyCode.Z))){
+				if (flag_right == 1) {
+					shoot.transform.position = muzzle.transform.position;
+					t4Angle = muzzle.transform.position;
+					count = 0;
 
-		if (Input.GetKeyDown (KeyCode.Z)) {    //Zキーが押された時
+					shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
+					//右手用
+					//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
+					//左手用
+					shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);
+
+					distance2 = 0;
+					flag = 0;
+					flag_right = 0;
+
+				}
+		}else if(Debug==true && (Input.GetMouseButton(0)||Input.GetMouseButton(2))) {    //Zキーが押された時
 			if (flag_right == 1)
 			{
 				shoot.transform.position = muzzle.transform.position;
