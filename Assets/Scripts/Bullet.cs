@@ -110,10 +110,10 @@ public class Bullet : MonoBehaviour {
 					shoot.transform.position = muzzle.position;
 
 					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);
-					  //右手用
-						//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 100);
-					  //左手用
-						shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);
+					//右手用
+					//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 100);
+					//左手用
+					shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);
 					flag = 0;
 					distance2 = 0;
 					flag_right = 0;
