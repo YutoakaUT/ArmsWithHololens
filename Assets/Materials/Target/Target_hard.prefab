@@ -51,8 +51,8 @@ GameObject:
   - component: {fileID: 4630221149831792}
   - component: {fileID: 33370422023992660}
   - component: {fileID: 23010177867225918}
-  - component: {fileID: 114702035857591218}
   - component: {fileID: 64251529870171058}
+  - component: {fileID: 114178813005930008}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4495246778310482}
   m_Layer: 0
-  m_Name: Target1
+  m_Name: Target_hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ Transform:
   m_GameObject: {fileID: 1805950802472148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.05}
   m_Children:
   - {fileID: 4845112563313116}
   - {fileID: 4630221149831792}
@@ -185,7 +185,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bbb0c49d1a76344008ce8e00fe0f48b6, type: 3}
---- !u!114 &114702035857591218
+--- !u!114 &114178813005930008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1707249644856498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08565f1d3d98e32469841153faeb1df6, type: 3}
+  m_Script: {fileID: 11500000, guid: e38d63c6b550ce246aaf7d64d034780d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 99dd66d58d6d9b349b778f2b4e1f2718, type: 3}

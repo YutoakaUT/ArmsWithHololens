@@ -1554,6 +1554,7 @@ GameObject:
   - component: {fileID: 1391215484}
   - component: {fileID: 1391215483}
   - component: {fileID: 1391215482}
+  - component: {fileID: 1391215486}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1618,6 +1619,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391215486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391215481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae9c208c4d724adb9921cf7030c620f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1399411170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,9 +1741,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d15fb37850af21448d0d37b00de33f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1932178668048484, guid: 8d5b935cdd561f647bd1c4dc72d828f4, type: 2}
+  target_normal: {fileID: 1932178668048484, guid: 8d5b935cdd561f647bd1c4dc72d828f4,
+    type: 2}
+  target_hard: {fileID: 1805950802472148, guid: db871f0a6e87a2e4ba814861a9a64e5b,
+    type: 2}
+  target_small: {fileID: 0}
   Debug: 0
-  max: 50
 --- !u!4 &1439180437
 Transform:
   m_ObjectHideFlags: 0
@@ -1891,7 +1906,6 @@ GameObject:
   - component: {fileID: 2001526524}
   - component: {fileID: 2001526526}
   - component: {fileID: 2001526525}
-  - component: {fileID: 2001526527}
   m_Layer: 0
   m_Name: SubCamera
   m_TagString: Untagged
@@ -1956,17 +1970,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &2001526527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2001526523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cae9c208c4d724adb9921cf7030c620f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wSpeed: 10
-  sSpeed: 7
-  adRotate: 200
