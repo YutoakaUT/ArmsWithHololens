@@ -99,7 +99,7 @@ public class Bullet : MonoBehaviour {
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
 			flag_right = 1;
-			if (Input.GetMouseButton(0)||Input.GetMouseButton(2)) {
+			if (Input.GetKeyDown (KeyCode.Z)) {
 				if (flag_right == 1)
 				{
 					t4Angle = muzzle.transform.position;
@@ -130,7 +130,7 @@ public class Bullet : MonoBehaviour {
 		}
 
 
-		if (Input.GetMouseButton(0)||Input.GetMouseButton(2)) {    //Zキーが押された時
+		if (Input.GetKeyDown (KeyCode.Z)) {    //Zキーが押された時
 			if (flag_right == 1)
 			{
 				shoot.transform.position = muzzle.transform.position;
