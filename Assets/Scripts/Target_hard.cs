@@ -6,6 +6,7 @@ public class Target_hard : MonoBehaviour
 {
 	public AudioClip clip;
 	public GameObject ExploadObj;
+	public int point=35;
 	Renderer rend;
 	int HP=3;
     // Use this for initialization
@@ -40,7 +41,7 @@ public class Target_hard : MonoBehaviour
 				GameObject effect = (GameObject)Instantiate (ExploadObj,hitPos, Quaternion.identity);
 				AudioSource.PlayClipAtPoint(clip, transform.position);//音
 				Target_making.tar++;              //再生成
-				Score.score+=20;
+				Score.score+=point;
 			}
         }
     }

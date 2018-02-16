@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 1932178668048484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.81, z: 3.84}
-  m_LocalScale: {x: 0.48014778, y: 0.48014778, z: 0.05}
+  m_LocalScale: {x: 0.48, y: 0.48, z: 0.05}
   m_Children:
   - {fileID: 4756118435570826}
   - {fileID: 4342293535283104}
@@ -289,3 +289,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExploadObj: {fileID: 100010, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
   clip: {fileID: 8300000, guid: 99dd66d58d6d9b349b778f2b4e1f2718, type: 3}
+  point: 10

@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour {
 		movementInputValue = Input.GetAxis("Vertical");
 		Vector3 movement = transform.forward * movementInputValue * moveSpeed * Time.deltaTime;
 		movement.y*=0;
-		rb.MovePosition(rb.position + movement.normalized/3);
+		rb.MovePosition(rb.position + movement.normalized/6);
 	}
 
 	// 左右移動のメソッド
@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour {
 		movementInputValue = Input.GetAxis("Horizontal");
 		Vector3 movement = transform.right * movementInputValue * moveSpeed * Time.deltaTime;
 		movement.y*=0;
-		rb.MovePosition(rb.position + movement.normalized/3);
+		rb.MovePosition(rb.position + movement.normalized/6);
 	}
 	
 	void Jump()

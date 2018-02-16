@@ -1745,7 +1745,8 @@ MonoBehaviour:
     type: 2}
   target_hard: {fileID: 1805950802472148, guid: db871f0a6e87a2e4ba814861a9a64e5b,
     type: 2}
-  target_small: {fileID: 0}
+  target_small: {fileID: 1107782152679262, guid: 550b973a6e554754586154e22e80b278,
+    type: 2}
   Debug: 0
 --- !u!4 &1439180437
 Transform:

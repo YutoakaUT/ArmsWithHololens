@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 
-public class Target_normal : MonoBehaviour
+public class Target_small : MonoBehaviour
 {
 	public GameObject ExploadObj;
 	public AudioClip clip;
