@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4996991579066802}
   - component: {fileID: 58990104915735838}
   m_Layer: 0
-  m_Name: mato2-2
+  m_Name: Target_normal
   m_TagString: mato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -98,7 +98,7 @@ public class Bullet2 : MonoBehaviour {
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
 			flag_right = 1;
-			if (Input.GetKeyDown (KeyCode.X)) {
+			if (Input.GetKeyDown (KeyCode.X)||Input.GetMouseButton(1)||Input.GetMouseButton(2)) {
 				if (flag_right == 1)
 				{
 					t4Angle = muzzle.transform.position;
@@ -129,7 +129,7 @@ public class Bullet2 : MonoBehaviour {
 		}
 
 
-		if (Input.GetKeyDown (KeyCode.X)) {    //Xキーが押された時
+		if (Input.GetKeyDown (KeyCode.X)||Input.GetMouseButton(1)||Input.GetMouseButton(2)) {    //Xキーが押された時
 			if (flag_right == 1)
 			{
 				shoot.transform.position = muzzle.transform.position;

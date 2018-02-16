@@ -24,14 +24,16 @@ public class Movement : MonoBehaviour {
 	void Move(){
 		movementInputValue = Input.GetAxis("Vertical");
 		Vector3 movement = transform.forward * movementInputValue * moveSpeed * Time.deltaTime;
-		rb.MovePosition(rb.position + movement);
+		movement.y*=0;
+		rb.MovePosition(rb.position + movement.normalized/3);
 	}
 
 	// 左右移動のメソッド
 	void Turn(){
 		movementInputValue = Input.GetAxis("Horizontal");
 		Vector3 movement = transform.right * movementInputValue * moveSpeed * Time.deltaTime;
-		rb.MovePosition(rb.position + movement);
+		movement.y*=0;
+		rb.MovePosition(rb.position + movement.normalized/3);
 	}
 	
 	void Jump()
