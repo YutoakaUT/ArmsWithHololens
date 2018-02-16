@@ -901,7 +901,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475110997}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &475110999
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1502,15 +1502,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.8499999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.0299997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1652,6 +1652,16 @@ Prefab:
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].outSlope
       value: -0.10003988
       objectReference: {fileID: 0}
+    - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
+        type: 2}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
   m_IsPrefabParent: 0
@@ -1763,6 +1773,7 @@ GameObject:
   - component: {fileID: 1391215484}
   - component: {fileID: 1391215483}
   - component: {fileID: 1391215482}
+  - component: {fileID: 1391215486}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1830,6 +1841,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1391215486
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391215481}
+  m_Enabled: 1
 --- !u!1 &1399411170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,15 +2133,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.8499999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.0299997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2182,7 +2200,7 @@ Prefab:
     - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
         type: 2}
       propertyPath: DopplerLevel
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
         type: 2}

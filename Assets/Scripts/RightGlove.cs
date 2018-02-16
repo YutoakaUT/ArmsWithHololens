@@ -198,13 +198,12 @@ public class RightGlove : MonoBehaviour {
 
 		//エネミーに当たった時設定　
 		if(other.gameObject.tag == "mato") {
-			AudioSource.PlayClipAtPoint(clip, muzzle.transform.position);//音
 			flag = 1;
 			count = 0;
 		}
 		//ここまで
 		distance1 = t1Angle.magnitude;
-		if (distance1 < 50) {   //ｚ軸で位置判定
+		/*if (distance1 < 50) {   //ｚ軸で位置判定
 			flag = 1;
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 50 / distance1);
 			count = 0;
@@ -214,7 +213,7 @@ public class RightGlove : MonoBehaviour {
 			flag = 1;
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 50/distance1);
 			count = 0;
-		}
+		}*/
 	}
 	void OnTrigerEnter(Collider other){
 		shoot.transform.position = muzzle.transform.position;
