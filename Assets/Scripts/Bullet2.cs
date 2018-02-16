@@ -81,10 +81,11 @@ public class Bullet2 : MonoBehaviour {
 			Vector3 cro = Vector3.Cross(v, a); 
 			shoot.GetComponent<Rigidbody>().AddForce(cro * 0.1f);
 
-			if (distance2 > 45) {     //総移動距離が50以上の時フラグ
+			if (distance2 > 45 || v.magnitude<20) {     //総移動距離が50以上の時フラグ
 				flag = 1;
 				distance2 = 0;
 			}
+
 
 		}   if (flag == 1) {     //手の方へ帰ってくるとき
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 50/distance1);

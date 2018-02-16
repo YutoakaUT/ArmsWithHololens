@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Target_hard : MonoBehaviour
 {
+	public GameObject ExploadObj;
 	public AudioClip clip;
 	Renderer rend;
 	int HP=3;
@@ -36,6 +37,7 @@ public class Target_hard : MonoBehaviour
 			{
 				Target_making.targetz.Remove(transform.parent.gameObject);//自滅
 				Destroy(transform.parent.gameObject);
+				GameObject effect = (GameObject)Instantiate (ExploadObj,hitPos, Quaternion.identity);
 				AudioSource.PlayClipAtPoint(clip, transform.position);//音
 				Target_making.tar++;              //再生成
 				Score.score+=20;

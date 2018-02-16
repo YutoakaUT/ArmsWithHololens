@@ -84,7 +84,7 @@ public class Bullet : MonoBehaviour {
 			Vector3 cro = Vector3.Cross(v, a); 
 			shoot.GetComponent<Rigidbody>().AddForce(cro * 0.1f);
 
-			if (distance2 > 45) {     //総移動距離が50以上の時フラグ
+			if (distance2 > 45 || v.magnitude<20) {     //総移動距離が50以上の時フラグ
 				flag = 1;
 				distance2 = 0;
 			}
@@ -177,10 +177,10 @@ public class Bullet : MonoBehaviour {
 				count = 0;
 
 				shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
-				//右手用
-				//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
-				//左手用
-				shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);
+
+				//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
+
+				shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);  //左手用
 
 				distance2 = 0;
 				flag = 0;
