@@ -1652,6 +1652,16 @@ Prefab:
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].outSlope
       value: -0.10003988
       objectReference: {fileID: 0}
+    - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
+        type: 2}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
   m_IsPrefabParent: 0
@@ -2182,7 +2192,7 @@ Prefab:
     - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
         type: 2}
       propertyPath: DopplerLevel
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82578754300605304, guid: 5a1924c485eae470f902a90fb4ead027,
         type: 2}
