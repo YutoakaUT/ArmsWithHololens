@@ -123,10 +123,8 @@ public class Bullet2 : MonoBehaviour {
 					count = 0;
 
 					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
-					//右手用
-					//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
-					//左手用
-					shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);
+					shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
+					//shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);  //左手用
 
 					distance2 = 0;
 					flag = 0;
@@ -156,10 +154,10 @@ public class Bullet2 : MonoBehaviour {
 				count = 0;
 
 				shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
-				//右手用
-				//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
+
+				shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 				//左手用
-				shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);
+				//shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);
 
 				distance2 = 0;
 				flag = 0;
@@ -174,10 +172,10 @@ public class Bullet2 : MonoBehaviour {
 				count = 0;
 
 				shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
-				//右手用
-				//shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);
+
+				shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 				//左手用
-				shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);
+				shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);  //左手用
 
 				distance2 = 0;
 				flag = 0;

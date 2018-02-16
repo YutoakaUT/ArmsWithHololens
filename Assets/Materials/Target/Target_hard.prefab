@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114178813005930008}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: mato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,9 +68,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4495246778310482}
+  - component: {fileID: 58591482001069214}
   m_Layer: 0
   m_Name: Target_hard
-  m_TagString: Untagged
+  m_TagString: mato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +172,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707249644856498}
   m_Mesh: {fileID: 4300000, guid: bbb0c49d1a76344008ce8e00fe0f48b6, type: 3}
+--- !u!58 &58591482001069214
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805950802472148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!64 &64251529870171058
 MeshCollider:
   m_ObjectHideFlags: 1
