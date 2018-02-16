@@ -102,7 +102,6 @@ public class Target_making : MonoBehaviour
 			if(Debug==true)
 				temp_y=2;
 			
-			
 			foreach (GameObject gameo in targetz)
 			{
 				if((gameo.transform.position-new Vector3(temp_x,temp_y,temp_z)).sqrMagnitude<
