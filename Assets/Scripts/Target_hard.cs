@@ -41,7 +41,7 @@ public class Target_hard : MonoBehaviour
 				AudioSource.PlayClipAtPoint(clip, transform.position);//音
 				Target_making.tar++;              //再生成
 				Score.score+=20;
-			}
+            }
         }
     }
 }
