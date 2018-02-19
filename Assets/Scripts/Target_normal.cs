@@ -8,7 +8,6 @@ public class Target_normal : MonoBehaviour
 {
 	public GameObject ExploadObj;
 	public AudioClip clip;
-	public int point=10;
     // Use this for initialization
     void Start()
     {
@@ -36,7 +35,7 @@ public class Target_normal : MonoBehaviour
 			GameObject effect = (GameObject)Instantiate (ExploadObj,hitPos, Quaternion.identity);
 			AudioSource.PlayClipAtPoint(clip, transform.position);//音
 			Target_making.tar++;              //再生成
-			Score.score+=point;
+			Score.score+=10;
         }
     }
 }

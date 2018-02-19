@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 public class Target_hard : MonoBehaviour
 {
-	public AudioClip clip;
 	public GameObject ExploadObj;
-	public int point=35;
+	public AudioClip clip;
 	Renderer rend;
 	int HP=3;
     // Use this for initialization
@@ -41,8 +40,8 @@ public class Target_hard : MonoBehaviour
 				GameObject effect = (GameObject)Instantiate (ExploadObj,hitPos, Quaternion.identity);
 				AudioSource.PlayClipAtPoint(clip, transform.position);//音
 				Target_making.tar++;              //再生成
-				Score.score+=point;
-			}
+				Score.score+=20;
+            }
         }
     }
 }
