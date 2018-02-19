@@ -21,6 +21,7 @@ public class RightGlove : MonoBehaviour {
 	private Vector3 t4Angle;   //shootの座標格納
 	private Vector3 tz1Angle;   //右グローブ用
 	private Vector3 tz2Angle;   //左グローブ用
+
 	private int flag_right = 1; 
 	public AudioClip clip;
 	public AudioClip clip2;  //BGM
@@ -28,8 +29,8 @@ public class RightGlove : MonoBehaviour {
 	private float startTime;
 
 	Vector3 a= new Vector3(0,3,0);//右グローブの回転速度
-
-
+	float angle = 0.0F;        //Gloveの回転調整
+	Vector3 axis = Vector3.zero;  //Gloveの回転調整
 
 	void Start () {
 		shoot.transform.position = muzzle.position;    //位置調整
@@ -39,8 +40,6 @@ public class RightGlove : MonoBehaviour {
 
 
 	void Update () {
-
-		//float step = speed2 * Time.deltaTime;
 		t1Angle = muzzle.transform.position - shoot.transform.position;
 		t4Angle = t4Angle - shoot.transform.position;
 		distance1 = t1Angle.magnitude;     
@@ -53,7 +52,9 @@ public class RightGlove : MonoBehaviour {
 		tz2Angle = new Vector3 (t3Angle.x-30, 0,0);
 		startTime += Time.deltaTime;
 
-
+		muzzle.rotation.ToAngleAxis (out angle, out axis);
+		shoot.transform.rotation = Quaternion.AngleAxis(angle, axis);
+		shoot.transform.Rotate(new Vector3(90,0,0));
 
 		if (flag == -1 ) {
 			shoot.transform.position = muzzle.transform.position;
@@ -62,12 +63,6 @@ public class RightGlove : MonoBehaviour {
 		if (startTime > 5) {
 			shoot.transform.position = muzzle.transform.position;
 		}
-		/*ここからうでを伸ばす機能
-		Vector3 scale = t1Angle;
-		scale.x = 1;
-		ring.transform.forward = t1Angle;
-		ring.transform.localScale = scale;
-		ここまで*/
 
 		if (count == 2) {   //衝突回数が1を超えた時，球の位置と発射口の位置との距離をとり始める
 			shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
@@ -83,22 +78,20 @@ public class RightGlove : MonoBehaviour {
 		}
 
 		if (flag == 0) {  
-
 			Vector3 v = shoot.GetComponent<Rigidbody>().velocity;//現在の速度を取得
 			Vector3 cro = Vector3.Cross(v, a); 
 			shoot.GetComponent<Rigidbody>().AddForce(cro * 0.1f);
 
-			if (distance2 > 50 || v.magnitude<20) {     //総移動距離が50以上の時か速度が20以下になった時のフラグ
+			if (distance2 > 50 || v.magnitude < 20) {     //総移動距離が50以上の時か速度が20以下になった時のフラグ
 				flag = 1;
 				distance2 = 0;
 			}
-
 
 		}   if (flag == 1) {     //手の方へ帰ってくるとき
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 50/distance1);
 			if (distance1 < 1) {
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;   //加速度0
-				shoot.transform.position = muzzle.transform.position;  //初期位置に戻す
+				shoot.transform.position = muzzle.transform.position;  //初期位置に戻すshoot.transform.Rotate(new Vector3(90,0,0));
 				flag = 2;
 				count = 0;
 			}
@@ -116,7 +109,6 @@ public class RightGlove : MonoBehaviour {
 					shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
 					shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 					//shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);  //左手用
-
 					distance2 = 0;
 					flag = 0;
 					flag_right = 0;
@@ -133,7 +125,6 @@ public class RightGlove : MonoBehaviour {
 					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
 					shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 					//shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);  //左手用
-
 					distance2 = 0;
 					flag = 0;
 					flag_right = 0;
@@ -153,8 +144,7 @@ public class RightGlove : MonoBehaviour {
 				count = 0;
 			}
 		}
-
-
+			
 		if (Debug==false && (Input.GetKeyDown(KeyCode.X))){
 			if (flag_right == 1) {
 				startTime = 0;
@@ -166,7 +156,6 @@ public class RightGlove : MonoBehaviour {
 
 				shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 				//shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);  //左手用
-
 				distance2 = 0;
 				flag = 0;
 				flag_right = 0;
@@ -184,7 +173,6 @@ public class RightGlove : MonoBehaviour {
 
 				shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 				//shoot.GetComponent<Rigidbody>().AddForce(tz2Angle * speed / 1000);  //左手用
-
 				distance2 = 0;
 				flag = 0;
 				flag_right = 0;
@@ -193,8 +181,10 @@ public class RightGlove : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter(Collision other){
-		count++;
-		AudioSource.PlayClipAtPoint(clip, muzzle.transform.position);//音
+		if(other.gameObject.tag == "wall"){
+			count++;
+			AudioSource.PlayClipAtPoint(clip, muzzle.transform.position);//音
+		}
 
 		//エネミーに当たった時設定　
 		if(other.gameObject.tag == "mato") {
@@ -217,6 +207,6 @@ public class RightGlove : MonoBehaviour {
 	}
 	void OnTrigerEnter(Collider other){
 		shoot.transform.position = muzzle.transform.position;
-		flag = 1;
+		flag = -1;
 	}
 }

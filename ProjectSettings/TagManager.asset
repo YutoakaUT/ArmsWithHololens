@@ -12,6 +12,7 @@ TagManager:
   - Punch
   - finger
   - mato
+  - wall
   layers:
   - Default
   - TransparentFX
