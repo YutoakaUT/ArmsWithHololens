@@ -21,15 +21,17 @@ public class LeftGlove : MonoBehaviour {
 	private Vector3 t4Angle;   //shootの座標格納
 	private Vector3 tz1Angle;   //右グローブ用
 	private Vector3 tz2Angle;   //左グローブ用
+	private Vector3 hitPos;
 
 	private int flag_right = 1; 
-	public AudioClip clip;
+	public AudioClip clip;  //効果音
 
-	private float startTime;
+	private float startTime;  //時間経過
 
 	Vector3 a= new Vector3(0,-3,0);//左グローブの回転速度
-	float angle = 0.0F;
-	Vector3 axis = Vector3.zero;
+	float angle = 0.0F;        //Gloveの回転調整
+	Vector3 axis = Vector3.zero;  //Gloveの回転調整
+
 
 
 	void Start () {
@@ -40,30 +42,32 @@ public class LeftGlove : MonoBehaviour {
 
 	void Update () {
 		t1Angle = muzzle.transform.position - shoot.transform.position;
-		t4Angle = t4Angle - shoot.transform.position;
-		distance1 = t1Angle.magnitude;     
-		distance2 += t4Angle.magnitude;   //総移動距離の計算
-		t4Angle = shoot.transform.position;
-		t3Angle = muzzle.transform.forward;
 		t2Angle = shoot.transform.forward - muzzle.transform.forward;
 		t2Angle = t2Angle.normalized;
-		tz1Angle = new Vector3 (t3Angle.x+30, 0,0);
-		tz2Angle = new Vector3 (t3Angle.x-30, 0,0);
-		startTime += Time.deltaTime;
+		t3Angle = muzzle.transform.forward;
+		t4Angle = t4Angle - shoot.transform.position;  
+		distance1 = t1Angle.magnitude;     
+		distance2 += t4Angle.magnitude;   //総移動距離の計算
+		t4Angle = shoot.transform.position;  //更新
 
-		muzzle.rotation.ToAngleAxis (out angle, out axis);
-		shoot.transform.rotation = Quaternion.AngleAxis(angle, axis);
-		shoot.transform.Rotate(new Vector3(90,0,0));
+		tz1Angle = new Vector3 (t3Angle.x+30, 20,0);
+		tz2Angle = new Vector3 (t3Angle.x-30, 20,0);
+		startTime += Time.deltaTime;  //時間経過を計測
+
+		muzzle.rotation.ToAngleAxis (out angle, out axis);   //muzzleの回転を取得
+		shoot.transform.rotation = Quaternion.AngleAxis(angle, axis);  //Gloveに回転を代入
+		shoot.transform.Rotate(new Vector3(90,0,0));   //Gloveの向きを90度回転
 
 		if (flag == -1) {
 			shoot.transform.position = muzzle.transform.position;
+			count = 0;
 		}
 
 		if (startTime > 5) {
 			shoot.transform.position = muzzle.transform.position;
 		}
 
-		if (count == 2) {   //衝突回数が1を超えた時，球の位置と発射口の位置との距離をとり始める
+		/*if (count >= 2) {   //衝突回数が1を超えた時，球の位置と発射口の位置との距離をとり始める
 			shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 			if (t2Angle.z > 0.3 || t2Angle.z < -0.3 || t2Angle.x > 0.3 || t2Angle.x < -0.3) {
 				flag = 1;
@@ -74,7 +78,7 @@ public class LeftGlove : MonoBehaviour {
 				flag = 1;
 				count = 0;
 			}
-		}
+		}*/
 
 		if (flag == 0) {  
 			Vector3 v = shoot.GetComponent<Rigidbody>().velocity;//現在の速度を取得
@@ -87,13 +91,17 @@ public class LeftGlove : MonoBehaviour {
 			}
 
 		}   if (flag == 1) {     //手の方へ帰ってくるとき
-			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 50/distance1);
+			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, 50 / distance1);
+			 /*else {
+				shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, hitPos, 50 / distance1);
+			}*/
 			if (distance1 < 1) {
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;   //加速度0
 				shoot.transform.position = muzzle.transform.position;  //初期位置に戻す
 				flag = 2;
 				count = 0;
 			}
+
 		}  if (flag == 2) {   //一度パンチが帰ってきた後の処理
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
@@ -180,7 +188,16 @@ public class LeftGlove : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		if(other.gameObject.tag == "wall"){
 			count++;
+			float angle2 = 0.0F;        //Gloveの回転調整
+			Vector3 axis2 = Vector3.zero;  //Gloveの回転調整
+			shoot.transform.rotation.ToAngleAxis (out angle2, out axis2);   //muzzleの回転を取得
+			shoot.transform.rotation = Quaternion.AngleAxis(angle2-45, axis2);  //Gloveに回転を代入
 			AudioSource.PlayClipAtPoint(clip, muzzle.transform.position);//音
+			foreach (ContactPoint point in other.contacts) {  
+				hitPos = point.point;  
+			}
+
+
 		}
 
 		//エネミーに当たった時設定　
