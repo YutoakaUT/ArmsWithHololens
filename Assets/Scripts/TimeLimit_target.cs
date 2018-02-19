@@ -47,10 +47,11 @@ public class TimeLimit_target: MonoBehaviour
 			Time.timeScale = 0f; //ゲームをフリーズ
 			//Qを押すと
 			if (Input.GetKeyDown (KeyCode.Q)) {
-			Destroy (instanceResultUI);
-			Time.timeScale = 1f; //フリーズ解除
-            gameflag = 0; //フラグを初期化
-			SceneManager.LoadSceneAsync("Start"); //ページ遷移
+				Target_making.targetz.Clear();
+				Destroy (instanceResultUI);
+				Time.timeScale = 1f; //フリーズ解除
+          	  gameflag = 0; //フラグを初期化
+				SceneManager.LoadSceneAsync("Start"); //ページ遷移
 			}
         }
     }

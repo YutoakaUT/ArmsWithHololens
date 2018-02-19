@@ -25,7 +25,6 @@ public class RightGlove : MonoBehaviour {
 
 	private int flag_right = 1;   
 	public AudioClip clip;   //効果音
-	public AudioClip clip2;  //BGM
 
 	private float startTime;  //時間経過
 
@@ -38,7 +37,6 @@ public class RightGlove : MonoBehaviour {
 	void Start () {
 		shoot.transform.position = muzzle.position;    //位置調整
 		startTime = Time.time;
-		AudioSource.PlayClipAtPoint(clip2, muzzle.transform.position);   //BGMを流す
 	}
 
 

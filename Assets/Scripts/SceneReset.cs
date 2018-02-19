@@ -14,6 +14,7 @@ public class SceneReset : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown (KeyCode.R)) {
+			Target_making.targetz.Clear();
 			SceneManager.LoadScene ("Start");
 		}
 	}

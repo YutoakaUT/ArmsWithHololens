@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.16788329, g: 0.21073541, b: 0.2899403, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -497,7 +497,6 @@ MonoBehaviour:
   speed2: 10000
   Debug: 0
   clip: {fileID: 8300000, guid: a7f9d6f1b99af4c19a903fe83659d246, type: 3}
-  clip2: {fileID: 8300000, guid: 09ec08d909d374e8282aa70bc30d6716, type: 3}
 --- !u!23 &137141275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -587,7 +586,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &186966096
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1425,7 +1424,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &614869967
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1510,7 +1509,6 @@ MonoBehaviour:
   speed2: 15000
   Debug: 0
   clip: {fileID: 8300000, guid: a7f9d6f1b99af4c19a903fe83659d246, type: 3}
-  clip2: {fileID: 0}
 --- !u!1 &641079655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2066,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1178458131885018, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_Name
@@ -2742,7 +2740,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4460278918076352, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1178458131885018, guid: 5a1924c485eae470f902a90fb4ead027, type: 2}
       propertyPath: m_Name
