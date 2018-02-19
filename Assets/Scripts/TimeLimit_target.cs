@@ -5,22 +5,26 @@ using UnityEngine.SceneManagement;
 public class TimeLimit_target: MonoBehaviour
 {
     public static int timeflag;
-    public static int gameflag;
-	public Text gameOverText; //ゲームオーバーの文字
+	int gameflag = 0;
+	public GameObject resultPrefab; //　終了した時に表示するUI
+	private GameObject instanceResultUI;　//　resultUIのインスタンス
     public float limit;
 
     // Use this for initialization
     void Start()
     {
-        gameflag = 0;
-		gameOverText.enabled = false;
-    }
+   
+	}
 
     // Update is called once per frame
     void Update()
     {
         if (gameflag == 0)
         {
+			if (Time.timeScale != 1.0F) {
+				Time.timeScale = 1.0F;
+			}
+
             if (limit > 0)
             {
                 limit -= Time.deltaTime; //スタートしてからの秒数を格納
@@ -36,13 +40,17 @@ public class TimeLimit_target: MonoBehaviour
         }
         if (gameflag == 1) {
             Target_making.targetz.Clear();
-			//ゲームオーバーの文字を表示
-			gameOverText.enabled = true;
 
-			//画面をクリックすると
+			if (instanceResultUI == null) {
+				instanceResultUI = (GameObject)Instantiate (resultPrefab);
+			}
+			Time.timeScale = 0f; //ゲームをフリーズ
+			//Qを押すと
 			if (Input.GetKeyDown (KeyCode.Q)) {
-            SceneManager.LoadSceneAsync("Start"); //ページ遷移
+			Destroy (instanceResultUI);
+			Time.timeScale = 1f; //フリーズ解除
             gameflag = 0; //フラグを初期化
+			SceneManager.LoadSceneAsync("Start"); //ページ遷移
 			}
         }
     }

@@ -15,6 +15,11 @@ public class TimerFanc : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (Time.timeScale != 1.0F) {
+			Time.timeScale = 1.0F;
+		}
+
 		if (timeflag == 1) {
 			countTime += Time.deltaTime; //スタートしてからの秒数を格納
 			GetComponent<Text> ().text = countTime.ToString ("F2"); //小数2桁にして表示
