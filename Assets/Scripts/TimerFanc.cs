@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class TimerFanc : MonoBehaviour {
 	public static int timeflag;
-	//public static int gameflag;
 	public static float countTime;
 
 	// Use this for initialization
@@ -18,9 +17,6 @@ public class TimerFanc : MonoBehaviour {
 	void Update () {
 		if (timeflag == 1) {
 			countTime += Time.deltaTime; //スタートしてからの秒数を格納
-			//if (gameflag == 1) {
-			//	countTime = GameTimer.timeLimit - countTime;
-			//}
 			GetComponent<Text> ().text = countTime.ToString ("F2"); //小数2桁にして表示
 		} else if (timeflag == 0) {
 			countTime = 0;

@@ -6,14 +6,14 @@ public class TimeLimit_target: MonoBehaviour
 {
     public static int timeflag;
     public static int gameflag;
-    //public static float countTime;
-    public float limit = 180;
+	public Text gameOverText; //ゲームオーバーの文字
+    public float limit;
+
     // Use this for initialization
     void Start()
     {
-        //timeflag = 0;
-        //countTime = 0;
         gameflag = 0;
+		gameOverText.enabled = false;
     }
 
     // Update is called once per frame
@@ -36,8 +36,14 @@ public class TimeLimit_target: MonoBehaviour
         }
         if (gameflag == 1) {
             Target_making.targetz.Clear();
+			//ゲームオーバーの文字を表示
+			gameOverText.enabled = true;
+
+			//画面をクリックすると
+			if (Input.GetKeyDown (KeyCode.Q)) {
             SceneManager.LoadSceneAsync("Start"); //ページ遷移
             gameflag = 0; //フラグを初期化
+			}
         }
     }
 }
