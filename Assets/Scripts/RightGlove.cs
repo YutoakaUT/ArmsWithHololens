@@ -19,6 +19,7 @@ public class RightGlove : MonoBehaviour {
 	private Vector3 t2Angle;   //muzzleとshootの向きベクトル差分
 	private Vector3 t3Angle;   //muzzleの座標格納
 	private Vector3 t4Angle;   //shootの座標格納
+	private Vector3 lastposition;   //shootの向きベクトル格納
 	private Vector3 tz1Angle;   //右グローブ用
 	private Vector3 tz2Angle;   //左グローブ用
 	private Vector3 hitPos;
@@ -41,6 +42,8 @@ public class RightGlove : MonoBehaviour {
 
 
 	void Update () {
+		if(count<1)
+			lastposition = shoot.transform.forward;
 		t1Angle = muzzle.transform.position - shoot.transform.position;
 		t2Angle = shoot.transform.forward - muzzle.transform.forward;
 		t2Angle = t2Angle.normalized;
@@ -84,9 +87,10 @@ public class RightGlove : MonoBehaviour {
 			Vector3 cro = Vector3.Cross(v, a); 
 			shoot.GetComponent<Rigidbody>().AddForce(cro * 0.1f);
 
-			if (distance2 > 50 || v.magnitude < 20) {     //総移動距離が50以上の時か速度が20以下になった時のフラグ
-				flag = 1;
-				distance2 = 0;
+			if ((distance2 > 60 && count==0) || v.magnitude < 20) {     //総移動距離が50以上の時か速度が20以下になった時のフラグ
+					flag = 1;
+					distance2 = 0;
+
 			}
 
 		}   if (flag == 1) {     //手の方へ帰ってくるとき
@@ -128,7 +132,7 @@ public class RightGlove : MonoBehaviour {
 					count = 0;
 
 					shoot.GetComponent<Rigidbody>().AddForce(t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
-					shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
+					shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 800);  //右手用
 					//shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);  //左手用
 					distance2 = 0;
 					flag = 0;
@@ -138,8 +142,8 @@ public class RightGlove : MonoBehaviour {
 			}
 		}  
 
-		if (count==1 && distance2>50 ) {   //衝突回数が1を超えた時，球の位置と発射口の位置との距離をとり始める
-			if (t2Angle.z > 0.3 || t2Angle.z < -0.3 || t2Angle.x > 0.3 || t2Angle.x < -0.3) {
+		if (count >= 1 && distance2 > 60) {   //衝突回数が1を超えた時，球の位置と発射口の位置との距離をとり始める
+			/*if (t2Angle.z > 0.3 || t2Angle.z < -0.3 || t2Angle.x > 0.3 || t2Angle.x < -0.3) {
 				flag = 1;
 				count = 0;
 			}
@@ -147,6 +151,19 @@ public class RightGlove : MonoBehaviour {
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 				flag = 1;
 				count = 0;
+			}*/
+			if (flag != 3) {
+				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;   //加速度0
+				flag = 3;
+			}
+			if (flag == 3) {
+				shoot.GetComponent<Rigidbody> ().AddForce (-(shoot.transform.position - hitPos).normalized * speed / 20);
+				//shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, hitPos, speed/40);
+				if ((shoot.transform.position - hitPos).magnitude < 3) {
+					shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero; 
+					flag = 1;
+					count = 0;
+				}
 			}
 		}
 			
@@ -157,7 +174,7 @@ public class RightGlove : MonoBehaviour {
 				t4Angle = muzzle.transform.position;
 				count = 0;
 
-				shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed / 5);  //腕が向いている方向に射出
+				shoot.GetComponent<Rigidbody> ().AddForce (t3Angle.normalized * speed / 10);  //腕が向いている方向に射出
 
 				shoot.GetComponent<Rigidbody>().AddForce(tz1Angle * speed / 1000);  //右手用
 				//shoot.GetComponent<Rigidbody> ().AddForce (tz2Angle * speed / 1000);  //左手用
@@ -191,7 +208,7 @@ public class RightGlove : MonoBehaviour {
 			float angle2 = 0.0F;        //Gloveの回転調整
 			Vector3 axis2 = Vector3.zero;  //Gloveの回転調整
 			shoot.transform.rotation.ToAngleAxis (out angle2, out axis2);   //muzzleの回転を取得
-			shoot.transform.rotation = Quaternion.AngleAxis (angle2 +45, axis2);  //Gloveに回転を代入
+			shoot.transform.rotation = Quaternion.AngleAxis (angle2, -lastposition);  //Gloveに回転を代入
 			AudioSource.PlayClipAtPoint (clip, muzzle.transform.position);//音
 			foreach (ContactPoint point in other.contacts) {  
 				hitPos = point.point;  
@@ -218,7 +235,7 @@ public class RightGlove : MonoBehaviour {
 		}*/
 	}
 	void OnTrigerEnter(Collider other){
-		shoot.transform.position = muzzle.transform.position;
+		//shoot.transform.position = muzzle.transform.position;
 		flag = -1;
 	}
 }
