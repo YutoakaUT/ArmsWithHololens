@@ -32,6 +32,7 @@ public class LeftGlove : MonoBehaviour {
 
 	public AudioClip clip1;   //効果音
 	public AudioClip clip2;   //効果音
+	public AudioClip clip3;   //効果音
 
 
 	void Start () {
@@ -82,7 +83,7 @@ public class LeftGlove : MonoBehaviour {
 					} else {
 						shoot.GetComponent<Rigidbody> ().AddForce (tz1Angle.normalized * speed / 5);  //腕が向いている方向に射出 
 					}
-					//AudioSource.PlayClipAtPoint (clip2, t2Angle);//音
+					AudioSource.PlayClipAtPoint (clip2, t2Angle);//音
 				}
 			}
 		}
@@ -137,6 +138,7 @@ public class LeftGlove : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		if(other.gameObject.tag == "mato") {  //マトに当たった場合，そのまま戻る
 			shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+			AudioSource.PlayClipAtPoint (clip3, muzzle.transform.position);//音
 			if (count >= 1) {  //もし既に壁に当たっていた場合
 				flag = 2;
 			} else {
