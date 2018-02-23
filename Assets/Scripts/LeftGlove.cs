@@ -5,6 +5,8 @@ public class LeftGlove : MonoBehaviour {
 
 	public GameObject shoot;  //弾丸
 	public Transform muzzle;  //射出場所
+	public GameObject spring;  //バネ生成オブジェクト
+
 	public int distancelimit = 60;  //移動距離制限
 
 	public float speed = 5000;   //初速
@@ -64,7 +66,8 @@ public class LeftGlove : MonoBehaviour {
 		if (flag == -1 ) {  //スタート時
 			shoot.transform.position = muzzle.transform.position;
 			count = 0;
-			if (Input.GetMouseButton(0)||Input.GetMouseButton(2)||Input.GetKeyDown(KeyCode.Z)){  //最初の射出時用
+			spring.transform.position = muzzle.transform.position;  //バネ生成の位置を腕の位置に
+			if (Input.GetMouseButton(0)||Input.GetMouseButton(2)||(Input.GetKeyDown(KeyCode.Z))){  //最初の射出時用
 				if (flag_right == 1) {
 					
 					shoot.transform.position = muzzle.transform.position;
@@ -85,6 +88,7 @@ public class LeftGlove : MonoBehaviour {
 		}
 
 		if (flag == 0) {  //パンチが壁に向かって放たれている時
+			spring.transform.position = shoot.transform.position;  //バネ生成のオブジェクトをパンチと同期
 			Vector3 v = shoot.GetComponent<Rigidbody> ().velocity;//現在の速度を取得
 			Vector3 cross = Vector3.Cross (v, curve); 
 			shoot.GetComponent<Rigidbody> ().AddForce (cross * 0.1f);  //カーブを描くように速度に応じた力を加える
@@ -95,6 +99,7 @@ public class LeftGlove : MonoBehaviour {
 		}
 
 		if (flag == 1) {     //パンチが手の方へ帰ってくる時
+			spring.transform.position = muzzle.transform.position;   //バネ生成のオブジェクトをパンチと同期
 			shoot.transform.position = Vector3.MoveTowards (shoot.transform.position, muzzle.transform.position, distancelimit / distance1);
 			if (distance1 < 1) { //パンチと腕の距離がほぼ0の時
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;   //加速度0
@@ -106,6 +111,7 @@ public class LeftGlove : MonoBehaviour {
 		}  
 
 		if (count >= 1) {  //壁の衝突回数が1以上の場合
+			spring.transform.position = hitPos1;
 			if (shoot.transform.forward.normalized.x <= 0) {  //左の壁に向かってパンチを射出した場合（特殊動作）
 				shoot.transform.LookAt (-hitPos1);
 				shoot.transform.Rotate(new Vector3(90,5,0)); 
@@ -118,6 +124,7 @@ public class LeftGlove : MonoBehaviour {
 				if (flag == 2) {
 					shoot.GetComponent<Rigidbody> ().AddForce (-(shoot.transform.position - hitPos1).normalized * speed / 80); 
 					if ((shoot.transform.position - hitPos1).magnitude < 3) {  //壁との距離が近くなったらプレイヤーの元へ移動
+						spring.transform.position = shoot.transform.position;   //バネ生成のオブジェクトをパンチと同期
 						shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero; 
 						flag = 1;
 						count = 0;
@@ -142,6 +149,7 @@ public class LeftGlove : MonoBehaviour {
 			if(count == 1){
 				foreach (ContactPoint point in other.contacts) {  
 					hitPos1 = point.point;  //衝突した座標を検出
+					spring.transform.position = hitPos1;   //バネ生成のオブジェクトを衝突位置と同期
 				}
 			}else if(count >= 2){
 				shoot.GetComponent<Rigidbody> ().velocity = Vector3.zero;  //2回以上当たった場合はすぐに戻る
