@@ -25,7 +25,7 @@ public class LeftGlove : MonoBehaviour {
 	private Vector3 tz2Angle;   //左グローブ用
 	private Vector3 hitPos1;   //1度目に当たった座標を格納
 
-	private Vector3 curve= new Vector3(0,-8,3);//右グローブの軌道調整用
+	private Vector3 curve= new Vector3(3,-8,3);//右グローブの軌道調整用
 	private Vector3 axis = Vector3.zero;  //Gloveの回転調整
 
 	public AudioClip clip1;   //効果音
