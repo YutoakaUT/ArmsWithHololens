@@ -980,6 +980,7 @@
     <Compile Include="Assets\Materials\Menu\ParticleSystems\Scripts\WaterHoseParticles.cs" />
     <Compile Include="Assets\modetrigger.cs" />
     <Compile Include="Assets\Scene\HighScore.cs" />
+    <Compile Include="Assets\Scene\OP\Cartoon Particles -  Fire &amp; Smoke (Free)\Scripts\Mover.cs" />
     <Compile Include="Assets\Scripts\BoomerangEffect.cs" />
     <Compile Include="Assets\Scripts\Bullet_AI.cs" />
     <Compile Include="Assets\Scripts\Bullet2_AI.cs" />
@@ -1074,6 +1075,10 @@
     <None Include="Assets\Materials\Menu\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
     <None Include="Assets\Materials\Menu\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
