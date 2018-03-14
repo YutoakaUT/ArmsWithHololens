@@ -23,3 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/TwoPlay.unity
     guid: 8697c8066d7db6545814d0b8a14bfbdf
+  - enabled: 1
+    path: Assets/HoloToolkit-Examples/Input/Scenes/InputTapTest.unity
+    guid: fc69f7c82d7c3e74baa3f1a6c33b3ee0
+  - enabled: 1
+    path: Assets/Scene/OP.unity
+    guid: 8dc1d4fc6f44d4c2ba89faba41699aa0

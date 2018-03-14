@@ -15,7 +15,7 @@ public class SceneReset : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Target_making.targetz.Clear();
-			SceneManager.LoadScene ("Start");
+			SceneManager.LoadScene ("OP");
 		}
 	}
 }
