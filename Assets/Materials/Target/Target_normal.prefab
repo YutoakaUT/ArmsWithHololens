@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 1932178668048484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.81, z: 3.84}
-  m_LocalScale: {x: 0.48014778, y: 0.48014778, z: 0.05}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.05}
   m_Children:
   - {fileID: 4756118435570826}
   - {fileID: 4342293535283104}
@@ -164,6 +164,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -235,9 +236,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 736859c453f663f40804d86871718bfb, type: 3}
 --- !u!108 &108423963454090358
@@ -287,5 +288,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08565f1d3d98e32469841153faeb1df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExploadObj: {fileID: 100010, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+  ExploadObj: {fileID: 100010, guid: 868a6986ffa498f48bb204f8e5e25bbc, type: 2}
   clip: {fileID: 8300000, guid: 99dd66d58d6d9b349b778f2b4e1f2718, type: 3}

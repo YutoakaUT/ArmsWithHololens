@@ -3,14 +3,16 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class Gradient : MonoBehaviour {
 
 	//public GameObject myCube;
 	int collisionFrag=0;
+    internal int colorKeys;
 
-	// Use this for initialization
-	void Update () {
+    // Use this for initialization
+    void Update () {
 
 		//gameObject取得 
 		//myCube = GameObject.Find("CubeName");
@@ -45,4 +47,19 @@ public class Gradient : MonoBehaviour {
 			collisionFrag = 0;
 		}
 	}
+
+    internal void SetKeys(GradientColorKey[] colorKeys, GradientAlphaKey[] alphaKeys)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal Color Evaluate(float v)
+    {
+        throw new NotImplementedException();
+    }
+
+    public static implicit operator UnityEngine.Gradient(Gradient v)
+    {
+        throw new NotImplementedException();
+    }
 }

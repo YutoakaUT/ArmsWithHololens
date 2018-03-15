@@ -13,9 +13,13 @@ public class SceneReset : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Target_making.targetz.Clear();
-			SceneManager.LoadScene ("Start");
-		}
-	}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Target_making.targetz.Clear();
+            SceneManager.LoadScene ("OP");
+#pragma warning disable CS0618 // 型またはメンバーが古い形式です
+           // Application.LoadLevel("OP");
+#pragma warning restore CS0618 // 型またはメンバーが古い形式です
+        }
+        }
 }

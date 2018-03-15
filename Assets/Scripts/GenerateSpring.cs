@@ -18,10 +18,13 @@ public class GenerateSpring : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		temp = new GameObject[(int)maxNum];
+        var parent = this.transform;
 	
 		for (n = 0; n < maxNum; n++) {
 
-			temp[n] = (GameObject)Instantiate (springPrefab);
+			temp[n] = (GameObject)Instantiate (springPrefab,new Vector3(0,0,0),Quaternion.identity,parent);
+            //temp[n] = (GameObject)Instantiate(springPrefab);
+            //temp[n].transform.localScale = new Vector3(springsize, springsize, springsize);
 		}
 	}
 
@@ -35,8 +38,9 @@ public class GenerateSpring : MonoBehaviour {
 			Vector3 thisPos = minPos * n;
 			temp[n].transform.localScale = new Vector3( springsize, springsize, springsize);
 			temp[n].transform.position = thisPos + armPos;
-			temp[n].transform.LookAt( grovePos );
-			temp[n].transform.Rotate(new Vector3(0.0f, 90.0f, 90.0f));
+			//temp[n].transform.LookAt( grovePos );
+			//temp[n].transform.Rotate(new Vector3(0.0f, 90.0f, 90.0f));
 		}
+       this.transform.LookAt(grovePos);
 	}
 }
